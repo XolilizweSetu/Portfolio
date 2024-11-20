@@ -53,8 +53,8 @@ header nav ul li a:hover {
     text-align: center;
     padding: 4rem 1rem;
     width: 100%;
-    background: url('backg.jpg') center/cover no-repeat;
-    color: #fff;
+    background: url('background.jpg') center/cover no-repeat;
+    color:black;
     min-height: 100vh;
 }
 
