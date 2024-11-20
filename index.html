@@ -6,9 +6,6 @@
     <title>Portfolio | Setu Xolilizwe</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</a>
-
 </head>
 <body>
     <header>
@@ -21,27 +18,24 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-       
     </header>
-    
 
     <section id="home">
         <div class="intro">
             <h1>Hi, I'm <span>Setu Xolilizwe</span></h1>
             <p>A Web Developer who loves creating clean, responsive websites.</p>
             <a href="#portfolio" class="btn">See My Work</a>
-            <a href="SetuXolilizwe, CV.pdf" class="btn">Download My CV</a>
+            <a href="SetuXolilizwe-CV.pdf" class="btn">Download My CV</a>
         </div>
     </section>
 
     <section id="about">
         <h2>About Me</h2>
-        <p>I am a passionate web developer experienced in both front-end and back-end development
-        <p>with a focus on building intuitive and user-friendly web applications</p>
-        <p>A graduate in Information Technology Software Development, I bring over 2 years of experience as an IT Technician. <br>
+        <p>I am a passionate web developer experienced in both front-end and back-end development</p>
+        <p>with a focus on building intuitive and user-friendly web applications.</p>
+        <p>A graduate in Information Technology Software Development, I bring over 2 years of experience as an IT Technician.</p>
         <p>Proficient in Microsoft 365 and various software tools, I am committed to ethical growth and continuously expanding my expertise in the tech field.</p>
     </section>
-    
 
     <section id="skills">
         <h2>My Skills</h2>
@@ -88,6 +82,7 @@
             </div>
         </div>
     </section>
+
     <section id="certifications">
         <h2>Certifications</h2>
         <div class="slider-container">
@@ -115,9 +110,38 @@
             <button class="prev">❮</button>
             <button class="next">❯</button>
         </div>
+        <script>
+            const prevButton = document.querySelector('.prev');
+            const nextButton = document.querySelector('.next');
+            const slides = document.querySelectorAll('.slide');
+            let currentIndex = 0;
+
+            function showSlide(index) {
+                if (index < 0) {
+                    currentIndex = slides.length - 1;
+                } else if (index >= slides.length) {
+                    currentIndex = 0;
+                }
+                slides.forEach((slide, i) => {
+                    slide.style.display = i === currentIndex ? 'block' : 'none';
+                });
+            }
+
+            prevButton.addEventListener('click', () => {
+                currentIndex--;
+                showSlide(currentIndex);
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex++;
+                showSlide(currentIndex);
+            });
+
+            // Initialize the first slide
+            showSlide(currentIndex);
+        </script>
     </section>
-    
-    
+
     <section id="portfolio">
         <h2>Portfolio</h2>
         <div class="project-grid">
@@ -133,25 +157,25 @@
             </div>
         </div>
     </section>
-    
+
+    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <form action="#">
+        <form id="contact-form">
             <div class="form-group">
-                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
             </div>
             <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="email" name="email" id="email" placeholder="Your Email" required>
             </div>
             <div class="form-group">
-                <textarea name="message" placeholder="Your Message" required></textarea>
+                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn">Send Message</button>
             </div>
         </form>
     </section>
-    
 
     <footer>
         <p>&copy; 2024 Setu Xolilizwe. All rights reserved.</p>
@@ -159,11 +183,37 @@
             <a href="https://facebook.com/yourprofile"><i class="fab fa-facebook"></i></a>
             <a href="https://linkedin.com/yourprofile"><i class="fab fa-linkedin"></i></a>
             <a href="https://whatsapp.com/yourprofile"><i class="fab fa-whatsapp"></i></a>
-            
         </div>
     </footer>
-    >
 
-    <script src="script.js"></script>
+   <!-- Include EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+    // Initialize EmailJS
+    emailjs.init("d_BLAnRPcaUltSzXq"); // Replace 'your_user_id' with your actual EmailJS user ID
+
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Get form data
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // Send the email using EmailJS
+        emailjs.sendForm("service_vff540n", "template_yh7qqcr", this)
+            .then(function(response) {
+                console.log("Message sent successfully", response);
+                alert("Your message has been successfully sent!");
+                // Optionally, clear the form after sending
+                document.getElementById("contact-form").reset();
+            }, function(error) {
+                console.log("Failed to send message", error);
+                alert("There was an error sending your message. Please try again later.");
+            });
+    });
+</script>
+
+
 </body>
 </html>
