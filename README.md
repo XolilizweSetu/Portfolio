@@ -16,6 +16,6 @@ Here's a breakdown of the key sections:
 7. Footer
 
 Technologies Used
-HTML5
-CSS3
+HTML
+CSS
 JavaScript
