@@ -116,12 +116,13 @@
                     <h3>A Crash Course in Data Science</h3>
                 </div>
                 <div class="slide">
-                    <img src="software.PNG" alt="software">
+                    <img src="security.jpg" alt="software">
                     <h3>Software Security</h3>
                 </div>
                 <div class="slide">
                     <img src="manage.PNG" alt="manage">
                     <h3>Managing Data Analysis</h3>
+                    <a href="setu_cv.pdf" class="btn">Download certificate</a>
                 </div>
             </div>
             <!-- Navigation Buttons -->
@@ -133,7 +134,7 @@
             const nextButton = document.querySelector('.next');
             const slides = document.querySelectorAll('.slide');
             let currentIndex = 0;
-
+    
             function showSlide(index) {
                 if (index < 0) {
                     currentIndex = slides.length - 1;
@@ -144,22 +145,22 @@
                     slide.style.display = i === currentIndex ? 'block' : 'none';
                 });
             }
-
+    
             prevButton.addEventListener('click', () => {
                 currentIndex--;
                 showSlide(currentIndex);
             });
-
+    
             nextButton.addEventListener('click', () => {
                 currentIndex++;
                 showSlide(currentIndex);
             });
-
+    
             // Initialize the first slide
             showSlide(currentIndex);
         </script>
     </section>
-
+    
     <section id="portfolio">
         <h2>Projects</h2>
         <div class="project-grid">
